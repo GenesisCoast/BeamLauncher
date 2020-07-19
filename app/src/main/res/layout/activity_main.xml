@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_dl_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start">
+
+    <RelativeLayout
+        xmlns:android = "http://schemas.android.com/apk/res/android"
+        xmlns:app = "http://schemas.android.com/apk/res-auto"
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarSize"
+            android:id="@+id/main_tb_navigation"
+            android:elevation="10dp"
+            android:background="@null"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/main_img_wallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="centerCrop"
+            android:elevation="0dp"
+            android:layout_marginBottom="@dimen/toolbarSize"/>
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:layout_alignParentBottom="true"
+            android:elevation="5dp"
+            android:theme = "@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.design.widget.TabLayout
+                android:id = "@+id/main_tl_categories"
+                android:layout_width = "match_parent"
+                android:layout_height = "@dimen/toolbarSize"
+                app:tabMode = "fixed"
+                app:tabGravity = "fill"/>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id = "@+id/main_vp_categories"
+            android:layout_width = "match_parent"
+            android:layout_height = "fill_parent"
+            android:layout_marginBottom="@dimen/toolbarSize"
+            android:layout_marginTop="@dimen/toolbarSize"/>
+
+    </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/main_nv_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/menu_main_navigation" />
+
+</android.support.v4.widget.DrawerLayout>
