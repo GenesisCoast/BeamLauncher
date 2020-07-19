@@ -3,7 +3,7 @@
     package="com.genesis_coast.beam_launcher">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE " />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DirectionsFragment"></activity>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
@@ -27,6 +26,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity" />
+
+        <service android:name=".NotificationListenerService"
+            android:label="@string/service_name"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
     </application>
+
 
 </manifest>

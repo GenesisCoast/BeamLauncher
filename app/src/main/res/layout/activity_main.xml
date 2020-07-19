@@ -19,7 +19,7 @@
             android:layout_height="@dimen/toolbarSize"
             android:id="@+id/main_tb_navigation"
             android:elevation="10dp"
-            android:background="@null"/>
+            android:background="@drawable/grad_toolbar"/>
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/main_img_wallpaper"

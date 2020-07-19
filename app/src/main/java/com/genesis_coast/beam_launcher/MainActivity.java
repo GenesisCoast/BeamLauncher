@@ -1,26 +1,24 @@
 package com.genesis_coast.beam_launcher;
 
+import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.WallpaperManager;
-import android.media.Image;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import java.util.ArrayList;
-import java.util.List;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.Toolbar;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mNavigationToggle;
@@ -30,10 +28,42 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mWallpaperView;
     private ViewPager mCategoriesPager;
 
+    private void checkPermissions() {
+
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (shouldShowRequestPermissionRationale(
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                // Explain to the user why we need to read the contacts
+            }
+
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    1);
+
+            // MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE is an
+            // app-defined int constant that should be quite unique
+
+            return;
+        }
+    }
+
     @TargetApi(Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Remove the status bar.
+        if (ContextCompat.checkSelfPermission(MainActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)){
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }else{
+                ActivityCompat.requestPermissions(MainActivity.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -50,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
         mCategoriesPager = findViewById(R.id.main_vp_categories);
 
         mNavigationToolbar = findViewById(R.id.main_tb_navigation);
+        mNavigationToolbar.setNavigationIcon(R.drawable.ic_menu_white);
         setSupportActionBar(mNavigationToolbar);
+
+        mNavigationToolbar.setTitleTextColor(Color.WHITE);
 
         mNavigationDrawer = findViewById(R.id.main_dl_navigation);
 
@@ -70,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         // Set the background.
+        checkPermissions();
+
         mWallpaperView.setImageDrawable(
                 WallpaperManager
                         .getInstance(this)
@@ -87,6 +122,31 @@ public class MainActivity extends AppCompatActivity {
         // Finalize the view pager behaviour.
         mCategoriesPager.setAdapter(adapter);
         mCategoriesTab.setupWithViewPager(mCategoriesPager);
+
+        // Set the tab icons.
+        mCategoriesTab.getTabAt(0).setIcon(R.drawable.ic_directions_white);
+        mCategoriesTab.getTabAt(1).setIcon(R.drawable.ic_phone_white);
+        mCategoriesTab.getTabAt(2).setIcon(R.drawable.ic_home_white);
+        mCategoriesTab.getTabAt(3).setIcon(R.drawable.ic_music_white);
+        mCategoriesTab.getTabAt(4).setIcon(R.drawable.ic_favourites_white);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults){
+        switch (requestCode){
+            case 1: {
+                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    if (ContextCompat.checkSelfPermission(MainActivity.this,
+                            Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                        Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+        }
     }
 }
 
