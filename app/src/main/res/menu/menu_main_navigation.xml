@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/new_game"
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_main_navigation_github"
         android:icon="@drawable/ic_github_black"
         android:title="Open source"/>
-    <item android:id="@+id/help"
+
+    <item
+        android:id="@+id/menu_main_navigation_help"
         android:icon="@drawable/ic_help_black"
         android:title="Help" />
-    <item android:id="@+id/help"
+
+    <item
+        android:id="@+id/menu_main_navigation_settings"
         android:icon="@drawable/ic_settings_black"
         android:title="Settings" />
+
 </menu>

@@ -41,7 +41,8 @@
                 android:layout_width = "match_parent"
                 android:layout_height = "@dimen/toolbarSize"
                 app:tabMode = "fixed"
-                app:tabGravity = "fill"/>
+                app:tabMinWidth="160dp"
+                app:tabGravity ="center"/>
 
         </android.support.design.widget.AppBarLayout>
 
@@ -49,8 +50,7 @@
             android:id = "@+id/main_vp_categories"
             android:layout_width = "match_parent"
             android:layout_height = "fill_parent"
-            android:layout_marginBottom="@dimen/toolbarSize"
-            android:layout_marginTop="@dimen/toolbarSize"/>
+            android:layout_marginBottom="@dimen/toolbarSize"/>
 
     </RelativeLayout>
 
@@ -61,5 +61,10 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/menu_main_navigation" />
+
+    <FrameLayout
+        android:id="@+id/main_fl_settings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </android.support.v4.widget.DrawerLayout>

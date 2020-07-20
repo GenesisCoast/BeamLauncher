@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/text"
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/directions_mv_map"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20sp"
-        />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:elevation="0dp"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_my_location_white"
+        android:layout_alignParentBottom="true"
+        android:elevation="5dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+        android:id="@+id/directions_fab_current_location"/>
+
+</RelativeLayout>

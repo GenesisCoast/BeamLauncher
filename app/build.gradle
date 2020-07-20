@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.genesis_coast.beam_launcher"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -27,4 +27,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.google.android.gms:play-services-maps:11.4.2'
+    implementation 'com.android.support:preference-v7:27.1.1'
+    implementation 'com.android.support:preference-v14:27.1.1'
+    implementation 'com.github.mmin18:realtimeblurview:1.2.1'
 }

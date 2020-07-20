@@ -2,11 +2,11 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/text"
+
+    <ListView
+        android:id="@+id/home_lv_notifications"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20sp"
-        />
+        android:layout_marginTop="@dimen/toolbarSize"/>
+
 </LinearLayout>

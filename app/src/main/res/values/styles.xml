@@ -14,5 +14,27 @@
 <!--        <item name="colorPrimary">@color/colorPrimary</item>-->
 <!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
 <!--        <item name="colorAccent">@color/colorAccent</item>-->
+
+        <item name="preferenceFragmentCompatStyle">
+            @style/AppPreferenceFragmentCompatStyle
+        </item>
+
     </style>
+
+    <style name="AppPreferenceFragmentCompatStyle"
+        parent="@style/PreferenceFragment.Material">
+        <item name="android:layout">@layout/pref_settings</item>
+    </style>
+
+    <style name="style_toggle_button" parent="android:Widget">
+        <item name="android:background">@drawable/bg_rounded_rectangle_accent</item>
+        <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
+    </style>
+
+    <style name="style_toggle_button_accent">
+        <item name="android:buttonStyleToggle">@style/style_toggle_button</item>
+        <item name="android:textOn"></item>
+        <item name="android:textOff"></item>
+    </style>
+
 </resources>

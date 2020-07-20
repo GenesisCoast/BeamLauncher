@@ -17,8 +17,8 @@ public class MusicFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v= inflater.inflate(R.layout.fragment_music, container, false);
-        TextView textView=v.findViewById(R.id.text);
-        textView.setText("Music Fragment");
+
+
         return v;
     }
 }
